@@ -173,13 +173,14 @@
 
     .hero-video {
       width: 100%;
-      max-width: 380px;
-      /* Reduced width */
-      max-height: 65vh;
-      /* Max height relative to viewport to prevent header overlap */
-      aspect-ratio: 9/16;
+      max-width: 550px;
+      /* Wider to match reference image size */
+      max-height: 80vh;
+      aspect-ratio: 4/5;
+      /* Wider portrait format (0.8) vs previous 9/16 (0.56) */
       position: relative;
-      border-radius: 16px;
+      border-radius: 20px;
+      /* Slightly larger radius */
       overflow: hidden;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
       opacity: 0;
@@ -199,8 +200,8 @@
       top: 0;
       left: 50%;
       height: 100%;
-      width: 320%;
-      /* Scale width to fill height (16:9 in 9:16) */
+      width: 230%;
+      /* Scaled to cover 4:5 container with 16:9 video */
       transform: translateX(-50%);
       pointer-events: none;
       /* Prevent clicks on video titles/controls */
