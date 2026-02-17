@@ -445,16 +445,9 @@
       background: var(--dark);
       color: var(--bg);
       display: grid;
-      grid-template-columns: 1fr;
-      /* Changed to single column */
+      grid-template-columns: 1fr 1fr;
       gap: 80px;
-      align-items: center;
-      max-width: 1000px;
-      /* Constrain width */
-      margin: 0 auto;
-      /* Center */
-      padding-left: 40px;
-      /* Ensure mobile padding is respected inside max-width container if needed, but section padding handles this usually. Let's rely on section padding. */
+      align-items: start;
     }
 
     .course .section-tag {
@@ -463,72 +456,50 @@
 
     .course .section-title {
       color: var(--bg);
+      max-width: 520px;
     }
 
     .course .section-desc {
       color: rgba(240, 235, 227, 0.6);
     }
 
-    .course-features {
-      list-style: none;
+    .course-intro {
+      margin-top: 30px;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(240, 235, 227, 0.6);
+      line-height: 1.8;
+      max-width: 500px;
+    }
+
+    .course-stats {
+      display: flex;
+      gap: 40px;
       margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(240, 235, 227, 0.1);
+    }
+
+    .course-stat {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 4px;
     }
 
-    .course-features li {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: rgba(240, 235, 227, 0.7);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(240, 235, 227, 0.08);
-    }
-
-    .course-features li .check {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 1px solid rgba(240, 235, 227, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      flex-shrink: 0;
-    }
-
-    .course-visual {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .course-card {
-      background: rgba(240, 235, 227, 0.06);
-      border: 1px solid rgba(240, 235, 227, 0.08);
-      padding: 40px;
-      transition: background 0.3s;
-    }
-
-    .course-card:hover {
-      background: rgba(240, 235, 227, 0.1);
-    }
-
-    .course-card h4 {
+    .course-stat-number {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 500;
-      margin-bottom: 8px;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--bg);
+      line-height: 1;
     }
 
-    .course-card p {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: rgba(240, 235, 227, 0.5);
-      line-height: 1.6;
+    .course-stat-label {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 227, 0.35);
     }
 
     .course-btn {
@@ -550,6 +521,89 @@
     .course-btn:hover {
       background: var(--white);
       transform: translateY(-2px);
+    }
+
+    .course-modules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      position: relative;
+    }
+
+    .course-module {
+      background: rgba(240, 235, 227, 0.04);
+      border: 1px solid rgba(240, 235, 227, 0.06);
+      padding: 30px 28px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .course-module:hover {
+      background: rgba(240, 235, 227, 0.08);
+      border-color: rgba(240, 235, 227, 0.12);
+    }
+
+    .course-module-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: rgba(240, 235, 227, 0.15);
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .course-module h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--bg);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .course-module p {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(240, 235, 227, 0.4);
+      line-height: 1.55;
+    }
+
+    .course-highlight {
+      grid-column: 1 / -1;
+      background: rgba(240, 235, 227, 0.06);
+      border: 1px solid rgba(240, 235, 227, 0.08);
+      padding: 32px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .course-highlight-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .course-highlight-text h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--bg);
+    }
+
+    .course-highlight-text p {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(240, 235, 227, 0.4);
+    }
+
+    .course-highlight-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--bg);
+      white-space: nowrap;
     }
 
     /* ── BOOKING ── */
@@ -917,6 +971,10 @@
         gap: 50px;
       }
 
+      .course-modules {
+        grid-template-columns: 1fr 1fr;
+      }
+
       .booking-options {
         grid-template-columns: 1fr 1fr;
       }
@@ -981,6 +1039,20 @@
 
       footer {
         padding: 60px 24px 30px;
+      }
+
+      .course-modules {
+        grid-template-columns: 1fr;
+      }
+
+      .course-stats {
+        gap: 28px;
+      }
+
+      .course-highlight {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
       }
 
       .booking-options {
@@ -1125,37 +1197,78 @@
   <section class="course" id="course">
     <div>
       <p class="section-tag fade-up">Signature Program</p>
-      <h2 class="section-title fade-up">ONLINE COURSE to master your vocal technique and free your voice!</h2>
-
-      <p class="section-desc fade-up" style="margin-top: 30px; font-weight: 500; color: var(--bg);">What Will You Learn
-        in This Course?</p>
-      <p class="section-desc fade-up">
-        Over 8 weeks, you’ll develop a strong, healthy, and confident voice from the ground up — all without strain or
-        uncertainty. You’ll master the essential vocal techniques used by powerhouse singers, learning safely without
-        the risk of the damage they often had to endure.
+      <h2 class="section-title fade-up"><em>Master</em> Your Voice<br>in 8 Weeks</h2>
+      <p class="course-intro fade-up">
+        Build a strong, healthy, and confident voice from the ground up — without strain or uncertainty.
+        Master the techniques used by powerhouse singers, learning safely without the risk of damage they often had to endure.
       </p>
 
-      <ul class="course-features fade-up">
-        <li><span class="check">✓</span> <strong>Pitch accuracy</strong> — stay in tune and control your voice with
-          confidence</li>
-        <li><span class="check">✓</span> <strong>Vocal range expansion</strong> — safely reach higher and lower notes
-        </li>
-        <li><span class="check">✓</span> <strong>Projection without strain</strong> — sing louder and fuller with ease
-        </li>
-        <li><span class="check">✓</span> <strong>Breath control</strong> — support your voice for stamina and tone
-          consistency</li>
-        <li><span class="check">✓</span> <strong>Chest voice power</strong> — deepen your most resonant register</li>
-        <li><span class="check">✓</span> <strong>Head voice freedom</strong> — effortlessly access your upper range</li>
-        <li><span class="check">✓</span> <strong>Register blending</strong> — switch between chest and head seamlessly
-        </li>
-        <li><span class="check">✓</span> <strong>Safe belting techniques</strong> — sing with power without hurting your
-          voice</li>
-        <li><span class="check">✓</span> <strong>Performance readiness</strong> — bring it all together on stage</li>
-      </ul>
-      <a href="#booking" class="course-btn">Enroll Now <span style="font-size:1.1rem; margin-left:4px;">→</span></a>
+      <div class="course-stats fade-up">
+        <div class="course-stat">
+          <span class="course-stat-number">8</span>
+          <span class="course-stat-label">Weeks</span>
+        </div>
+        <div class="course-stat">
+          <span class="course-stat-number">9</span>
+          <span class="course-stat-label">Modules</span>
+        </div>
+        <div class="course-stat">
+          <span class="course-stat-number">1:1</span>
+          <span class="course-stat-label">Feedback</span>
+        </div>
+      </div>
+
+      <a href="#booking" class="course-btn fade-up">Enroll Now <span style="font-size:1.1rem; margin-left:4px;">→</span></a>
     </div>
-    <div class="course-visual fade-up">
-      <!-- Why Now content removed as per request -->
+
+    <div class="course-modules fade-up">
+      <div class="course-module">
+        <div class="course-module-number">01</div>
+        <h4>Pitch Accuracy</h4>
+        <p>Stay in tune and control your voice with confidence</p>
+      </div>
+      <div class="course-module">
+        <div class="course-module-number">02</div>
+        <h4>Range Expansion</h4>
+        <p>Safely reach higher and lower notes</p>
+      </div>
+      <div class="course-module">
+        <div class="course-module-number">03</div>
+        <h4>Projection</h4>
+        <p>Sing louder and fuller without strain</p>
+      </div>
+      <div class="course-module">
+        <div class="course-module-number">04</div>
+        <h4>Breath Control</h4>
+        <p>Support your voice for stamina and tone</p>
+      </div>
+      <div class="course-module">
+        <div class="course-module-number">05</div>
+        <h4>Chest Voice</h4>
+        <p>Deepen your most resonant register</p>
+      </div>
+      <div class="course-module">
+        <div class="course-module-number">06</div>
+        <h4>Head Voice</h4>
+        <p>Effortlessly access your upper range</p>
+      </div>
+      <div class="course-module">
+        <div class="course-module-number">07</div>
+        <h4>Register Blending</h4>
+        <p>Switch between chest and head seamlessly</p>
+      </div>
+      <div class="course-module">
+        <div class="course-module-number">08</div>
+        <h4>Safe Belting</h4>
+        <p>Sing with power without hurting your voice</p>
+      </div>
+      <div class="course-highlight">
+        <div class="course-highlight-text">
+          <h4>Performance Readiness</h4>
+          <p>Bring it all together on stage — the final capstone</p>
+        </div>
+        <div class="course-highlight-price">$1,200</div>
+      </div>
     </div>
   </section>
 
