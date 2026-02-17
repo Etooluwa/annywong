@@ -366,13 +366,8 @@
     .about-image {
       width: 100%;
       aspect-ratio: 3/4;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
+      object-fit: cover;
+      display: block;
     }
 
     .about-text .name-highlight {
@@ -1163,7 +1158,7 @@
 
   <!-- ABOUT -->
   <section class="about" id="about">
-    <div class="about-image fade-up">Photo — Anny Wong</div>
+    <img src="assets/images/a.jpg" alt="Anny Wong" class="about-image fade-up">
     <div class="fade-up" style="animation-delay: 0.15s">
       <p class="section-tag">About</p>
       <h2 class="section-title"><em>the</em> Voice Behind Anny Wong</h2>
