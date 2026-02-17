@@ -445,9 +445,16 @@
       background: var(--dark);
       color: var(--bg);
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
+      /* Changed to single column */
       gap: 80px;
       align-items: center;
+      max-width: 1000px;
+      /* Constrain width */
+      margin: 0 auto;
+      /* Center */
+      padding-left: 40px;
+      /* Ensure mobile padding is respected inside max-width container if needed, but section padding handles this usually. Let's rely on section padding. */
     }
 
     .course .section-tag {
@@ -1148,25 +1155,7 @@
       <a href="#booking" class="course-btn">Enroll Now <span style="font-size:1.1rem; margin-left:4px;">→</span></a>
     </div>
     <div class="course-visual fade-up">
-      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 24px;">Why is now the best
-        time to get started?</h3>
-
-      <div class="course-card">
-        <p><strong>Build the right foundation.</strong> The longer poor habits go unchecked, the harder they are to
-          correct — now is the time to build the right foundation.</p>
-      </div>
-      <div class="course-card">
-        <p><strong>Protect your instrument.</strong> Your voice is a delicate instrument — without proper training, you
-          risk strain, injury, and long-term damage that can limit your singing for years to come.</p>
-      </div>
-      <div class="course-card">
-        <p><strong>Fit your schedule.</strong> You don’t need to wait for the “perfect time” — this course is designed
-          to fit your schedule and your pace.</p>
-      </div>
-      <div class="course-card">
-        <p><strong>Real transformation.</strong> Each week builds strategically on the last — and in just 8 weeks,
-          you'll hear and feel a real transformation in your voice.</p>
-      </div>
+      <!-- Why Now content removed as per request -->
     </div>
   </section>
 
