@@ -821,6 +821,93 @@
       color: var(--text-muted);
     }
 
+    /* ── SOCIALS ── */
+    .socials {
+      background: var(--dark);
+      text-align: center;
+    }
+
+    .socials .section-tag {
+      color: rgba(240, 235, 227, 0.4);
+    }
+
+    .socials .section-title {
+      color: var(--bg);
+      margin: 0 auto;
+    }
+
+    .socials .section-desc {
+      color: rgba(240, 235, 227, 0.5);
+      margin: 16px auto 0;
+    }
+
+    .socials-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border: 1px solid rgba(240, 235, 227, 0.12);
+      color: rgba(240, 235, 227, 0.6);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+    }
+
+    .social-link:hover {
+      background: rgba(240, 235, 227, 0.08);
+      color: var(--bg);
+      border-color: rgba(240, 235, 227, 0.25);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--bg);
+      text-align: center;
+    }
+
+    .contact-section .section-title {
+      margin: 0 auto;
+    }
+
+    .contact-section .section-desc {
+      margin: 16px auto 0;
+    }
+
+    .contact-email {
+      display: inline-block;
+      margin-top: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: var(--dark);
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(44, 44, 44, 0.2);
+      transition: border-color 0.3s;
+    }
+
+    .contact-email:hover {
+      border-color: var(--dark);
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--dark);
@@ -1010,6 +1097,18 @@
         display: none;
       }
 
+      #navLinks2 {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: none;
+      }
+
+      .nav-links.open .mobile-only {
+        display: list-item;
+      }
+
       .mobile-toggle {
         display: block;
       }
@@ -1036,6 +1135,18 @@
 
       .nav-links.open a {
         font-size: 1rem;
+      }
+
+      .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
       }
 
       section {
@@ -1082,6 +1193,7 @@
 
       .course-stats {
         gap: 28px;
+        flex-wrap: wrap;
       }
 
       .course-highlight {
@@ -1094,15 +1206,76 @@
         grid-template-columns: 1fr;
       }
 
-      .team-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-
       .footer-nav {
         flex-wrap: wrap;
         gap: 20px;
         justify-content: center;
+      }
+
+      .socials-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .social-link {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+
+      /* About image */
+      .about-image {
+        max-height: 360px;
+      }
+
+      /* Service cards */
+      .service-card {
+        padding: 32px 24px;
+      }
+
+      .service-number {
+        font-size: 2rem;
+      }
+
+      /* Course button */
+      .course-btn {
+        padding: 14px 32px;
+      }
+
+      .course-module {
+        padding: 24px 20px;
+      }
+
+      /* Testimonials */
+      .testimonial {
+        padding: 28px 24px;
+      }
+
+      /* Team grid — single column on small phones */
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .team-photo {
+        max-height: 300px;
+      }
+
+      /* Footer socials */
+      .footer-socials {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .footer-logo {
+        font-size: 1.8rem;
+      }
+
+      /* Nav logo */
+      .nav-logo {
+        font-size: 1.4rem;
       }
     }
   </style>
@@ -1120,7 +1293,7 @@
       </ul>
       <a href="#" class="nav-logo">ANNY WONG</a>
       <ul class="nav-links" id="navLinks2">
-        <li><a href="#booking"><span class="dot"></span>Book</a></li>
+        <li><a href="#contact"><span class="dot"></span>Book</a></li>
         <li><a href="#team"><span class="dot"></span>Team</a></li>
         <li><a href="#contact"><span class="dot"></span>Contact</a></li>
       </ul>
@@ -1139,7 +1312,7 @@
         <h1 class="hero-title"><em>the</em> Anny Wong<br>Method</h1>
         <p class="hero-subtitle">Discover the power of your voice with Anny Wong — elite vocal training for artists,
           performers, and professionals.</p>
-        <a href="#booking" class="hero-cta">Book a Session <span class="arrow">→</span></a>
+        <a href="#contact" class="hero-cta">Book a Session <span class="arrow">→</span></a>
       </div>
       <div class="hero-video">
         <iframe id="youtube-iframe"
@@ -1253,7 +1426,7 @@
         </div>
       </div>
 
-      <a href="#booking" class="course-btn fade-up">Enroll Now <span style="font-size:1.1rem; margin-left:4px;">→</span></a>
+      <a href="#contact" class="course-btn fade-up">Enroll Now <span style="font-size:1.1rem; margin-left:4px;">→</span></a>
     </div>
 
     <div class="course-modules fade-up">
@@ -1303,38 +1476,6 @@
           <p>Bring it all together on stage — the final capstone</p>
         </div>
         <div class="course-highlight-price">$1,200</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BOOKING -->
-  <section class="booking" id="booking">
-    <p class="section-tag fade-up">Book a Session</p>
-    <h2 class="section-title fade-up"><em>the</em> First Step<br>to Your Voice</h2>
-    <p class="section-desc fade-up">Choose the session that fits your goals. All 1-on-1 sessions include a personalized
-      vocal assessment and take-home exercises.</p>
-
-    <div class="booking-options">
-      <div class="booking-card fade-up">
-        <div class="duration">30 <span>min</span></div>
-        <h3>Discovery Call</h3>
-        <p>A free introductory call to discuss your vocal goals and find the right training path.</p>
-        <div class="price">Free</div>
-        <a href="#" class="book-btn">Book Now</a>
-      </div>
-      <div class="booking-card fade-up">
-        <div class="duration">60 <span>min</span></div>
-        <h3>Standard Session</h3>
-        <p>A focused hour of technique work, exercises, and personalized coaching with Anny.</p>
-        <div class="price">$150</div>
-        <a href="#" class="book-btn">Book Now</a>
-      </div>
-      <div class="booking-card fade-up">
-        <div class="duration">90 <span>min</span></div>
-        <h3>Deep Dive Session</h3>
-        <p>Extended coaching for intensive breakthroughs — ideal for performers and recording artists.</p>
-        <div class="price">$220</div>
-        <a href="#" class="book-btn">Book Now</a>
       </div>
     </div>
   </section>
@@ -1394,6 +1535,43 @@
     </div>
   </section>
 
+  <!-- SOCIALS -->
+  <section class="socials" id="socials">
+    <p class="section-tag fade-up">Follow Along</p>
+    <h2 class="section-title fade-up"><em>Stay</em> Connected</h2>
+    <p class="section-desc fade-up">Join the community and follow Anny's latest vocal tips, performances, and behind-the-scenes moments.</p>
+    <div class="socials-grid fade-up">
+      <a href="#" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
+      </a>
+      <a href="#" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+      <a href="#" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61.01 3.91.08.52.01 1.04.07 1.56.13.52.06 1.03.16 1.53.3.5.14.98.34 1.43.59.45.25.86.56 1.23.92.37.37.68.78.92 1.23.25.45.45.93.59 1.43.14.5.24 1.01.3 1.53.06.52.12 1.04.13 1.56.07 1.3.1 2.6.08 3.91a49.28 49.28 0 01-.08 3.91c-.01.52-.07 1.04-.13 1.56-.06.52-.16 1.03-.3 1.53-.14.5-.34.98-.59 1.43-.25.45-.56.86-.92 1.23-.37.37-.78.68-1.23.92-.45.25-.93.45-1.43.59-.5.14-1.01.24-1.53.3-.52.06-1.04.12-1.56.13-1.3.07-2.6.1-3.91.08a49.28 49.28 0 01-3.91-.08c-.52-.01-1.04-.07-1.56-.13a8.39 8.39 0 01-1.53-.3 5.87 5.87 0 01-1.43-.59 5.57 5.57 0 01-1.23-.92 5.57 5.57 0 01-.92-1.23 5.87 5.87 0 01-.59-1.43 8.39 8.39 0 01-.3-1.53c-.06-.52-.12-1.04-.13-1.56A49.28 49.28 0 01.02 12.525c-.02-1.31.01-2.61.08-3.91.01-.52.07-1.04.13-1.56.06-.52.16-1.03.3-1.53.14-.5.34-.98.59-1.43.25-.45.56-.86.92-1.23.37-.37.78-.68 1.23-.92.45-.25.93-.45 1.43-.59.5-.14 1.01-.24 1.53-.3.52-.06 1.04-.12 1.56-.13 1.3-.07 2.6-.1 3.91-.08zM9.95 7.34l-.02 9.33 6.23-4.67-6.21-4.66z"/></svg>
+        TikTok
+      </a>
+      <a href="#" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a href="#" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Spotify
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <p class="section-tag fade-up">Get in Touch</p>
+    <h2 class="section-title fade-up"><em>Let's</em> Connect</h2>
+    <p class="section-desc fade-up">For bookings, inquiries, or collaborations — reach out directly.</p>
+    <a href="mailto:hello@annywong.com" class="contact-email fade-up">hello@annywong.com</a>
+  </section>
+
   <!-- MARQUEE 2 -->
   <div class="marquee">
     <div class="marquee-track">
@@ -1420,7 +1598,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#course">Course</a></li>
-      <li><a href="#booking">Book</a></li>
+      <li><a href="#contact">Book</a></li>
       <li><a href="#team">Team</a></li>
     </ul>
     <div class="footer-line"></div>
@@ -1490,16 +1668,26 @@
         });
       }
 
-      // 2. Mobile Menu Toggle (Toggle BOTH lists)
+      // 2. Mobile Menu Toggle — merge both lists into first overlay
       const mobileToggle = document.getElementById('mobileToggle');
+      const navLinks1 = document.getElementById('navLinks');
+      const navLinks2 = document.getElementById('navLinks2');
       const allNavLists = document.querySelectorAll('.nav-links');
+
+      // Clone second list items into first list for mobile menu
+      if (navLinks1 && navLinks2) {
+        navLinks2.querySelectorAll('li').forEach(li => {
+          const clone = li.cloneNode(true);
+          clone.classList.add('mobile-only');
+          navLinks1.appendChild(clone);
+        });
+      }
+
       const modalLinks = document.querySelectorAll('.nav-links a');
 
       if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
-          // Toggle 'open' on all nav lists
-          allNavLists.forEach(list => list.classList.toggle('open'));
-          // Animate hamburger
+          navLinks1.classList.toggle('open');
           mobileToggle.classList.toggle('active');
         });
       }
@@ -1507,7 +1695,7 @@
       // Close menu when a link is clicked
       modalLinks.forEach(link => {
         link.addEventListener('click', () => {
-          allNavLists.forEach(list => list.classList.remove('open'));
+          navLinks1.classList.remove('open');
           mobileToggle.classList.remove('active');
         });
       });
