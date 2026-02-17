@@ -186,6 +186,18 @@
       object-fit: cover;
     }
 
+    .hero-video iframe {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      width: 320%;
+      /* Scale width to fill height (16:9 in 9:16) */
+      transform: translateX(-50%);
+      pointer-events: none;
+      /* Prevent clicks on video titles/controls */
+    }
+
     .mute-toggle {
       position: absolute;
       bottom: 20px;
@@ -1008,11 +1020,10 @@
         <a href="#booking" class="hero-cta">Book a Session <span class="arrow">→</span></a>
       </div>
       <div class="hero-video">
-        <video id="heroVideo" autoplay muted loop playsinline
-          poster="https://cdn.coverr.co/videos/coverr-singing-into-microphone-5369/poster.jpg">
-          <source src="https://cdn.coverr.co/videos/coverr-singing-into-microphone-5369/1080p.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <iframe id="youtube-iframe"
+          src="https://www.youtube.com/embed/wUNTgmIpU_c?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=wUNTgmIpU_c&playsinline=1&modestbranding=1&rel=0&fs=0&disablekb=1"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
         <button id="muteToggle" class="mute-toggle" aria-label="Unmute video">
           <!-- Music Note Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1254,26 +1265,66 @@
   </footer>
 
   <script>
+    // Load YouTube API
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-iframe', {
+        videoId: 'wUNTgmIpU_c', // YouTube video ID
+        playerVars: {
+          'autoplay': 1,
+          'controls': 0,
+          'loop': 1,
+          'mute': 1, // Start muted
+          'playlist': 'wUNTgmIpU_c' // Required for loop to work
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.playVideo();
+
+      setInterval(() => {
+        if (player && player.getCurrentTime) {
+          const time = player.getCurrentTime();
+          // Loop logic: restart at 0 if > 60s
+          if (time >= 60) {
+            player.seekTo(0);
+          }
+        }
+      }, 1000);
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        player.playVideo();
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Mute Toggle & Loop Logic
-      const video = document.getElementById('heroVideo');
+      // 1. Mute Toggle
       const toggle = document.getElementById('muteToggle');
 
-      if (video) {
-        // Loop first 1 minute (60 seconds)
-        video.addEventListener('timeupdate', () => {
-          if (video.currentTime >= 60) {
-            video.currentTime = 0;
-            video.play();
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          if (!player) return;
+
+          if (player.isMuted()) {
+            player.unMute();
+            toggle.classList.add('active');
+          } else {
+            player.mute();
+            toggle.classList.remove('active');
           }
         });
-
-        if (toggle) {
-          toggle.addEventListener('click', () => {
-            video.muted = !video.muted;
-            toggle.classList.toggle('active', !video.muted);
-          });
-        }
       }
 
       // 2. Mobile Menu Toggle (Toggle BOTH lists)
