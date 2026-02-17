@@ -139,8 +139,7 @@
       /* Centered horizontally */
       overflow: hidden;
       background: var(--dark);
-      padding-top: 80px;
-      /* Offset for fixed header */
+      padding: 120px 60px;
     }
 
     .hero-image {
@@ -173,9 +172,8 @@
 
     .hero-video {
       width: 100%;
-      max-width: 550px;
-      /* Wider to match reference image size */
-      max-height: 80vh;
+      max-width: 400px;
+      max-height: 70vh;
       aspect-ratio: 4/5;
       /* Wider portrait format (0.8) vs previous 9/16 (0.56) */
       position: relative;
@@ -267,7 +265,8 @@
 
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      /* Reduced sizes */
       font-weight: 300;
       line-height: 1.05;
       color: var(--bg);
