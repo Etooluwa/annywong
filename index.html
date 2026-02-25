@@ -1330,7 +1330,7 @@
       </div>
       <div class="hero-video">
         <iframe id="youtube-iframe"
-          src="https://www.youtube.com/embed/wNlAuDx_pfI?enablejsapi=1&autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&fs=0&disablekb=1&start=0&end=45"
+          src="https://www.youtube.com/embed/kBp5mkJbwTo?enablejsapi=1&autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&fs=0&disablekb=1&loop=1&playlist=kBp5mkJbwTo"
           frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
         </iframe>
         <button id="muteToggle" class="mute-toggle" aria-label="Unmute video">
@@ -1620,16 +1620,16 @@
     var player;
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('youtube-iframe', {
-        videoId: 'wNlAuDx_pfI', // YouTube video ID
+        videoId: 'kBp5mkJbwTo', // YouTube video ID
         playerVars: {
           'autoplay': 1,
           'controls': 0,
           'mute': 1,
-          'start': 0,
-          'end': 45,
           'playsinline': 1,
           'modestbranding': 1,
-          'rel': 0
+          'rel': 0,
+          'loop': 1,
+          'playlist': 'kBp5mkJbwTo'
         },
         events: {
           'onReady': onPlayerReady,
@@ -1640,17 +1640,6 @@
 
     function onPlayerReady(event) {
       event.target.playVideo();
-
-      setInterval(() => {
-        if (player && player.getCurrentTime) {
-          const time = player.getCurrentTime();
-          // Loop first 45 seconds
-          if (time >= 45) {
-            player.seekTo(0);
-            player.playVideo();
-          }
-        }
-      }, 1000);
     }
 
     function onPlayerStateChange(event) {
