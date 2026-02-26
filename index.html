@@ -834,6 +834,45 @@
       color: var(--text-muted);
     }
 
+    .image-carousel {
+      margin-top: 80px;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      /* full bleed layout */
+    }
+
+    .image-track {
+      display: inline-flex;
+      gap: 20px;
+      animation: carouselSlide 90s linear infinite;
+      padding-left: 20px;
+    }
+
+    .image-track:hover {
+      animation-play-state: paused;
+    }
+
+    .image-track img {
+      height: 300px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    @keyframes carouselSlide {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(calc(-50% - 10px));
+      }
+    }
+
     /* ── SOCIALS ── */
     .socials {
       background: linear-gradient(rgba(245, 245, 221, 0.8), rgba(245, 245, 221, 0.8)), url('assets/images/d.jpg') center/cover no-repeat;
@@ -1329,7 +1368,8 @@
         <h1 class="hero-title">Anny Wang</h1>
         <p class="hero-subtitle">Discover the power of your voice with Anny Wang — elite vocal training for artists,
           performers, and professionals.</p>
-        <a href="#course" class="hero-cta">Purchase the 8-Week Course <span class="arrow">→</span></a>
+        <a href="https://stan.store/annywangmusic/p/master-your-voice-with-anny-copy" target="_blank"
+          class="hero-cta">Purchase the 8-Week Course <span class="arrow">→</span></a>
       </div>
       <div class="hero-video">
         <iframe id="youtube-iframe"
@@ -1538,6 +1578,37 @@
         <p class="quote">"The corporate workshop transformed how our leadership team communicates. Anny made every
           session engaging and immediately impactful."</p>
         <p class="author">— Jennifer K., VP of Operations</p>
+      </div>
+    </div>
+
+    <div class="image-carousel fade-up">
+      <div class="image-track">
+        <!-- Original Set -->
+        <img src="assets/images/e.jpg" alt="Vocal Student">
+        <img src="assets/images/f.jpg" alt="Vocal Student">
+        <img src="assets/images/k.jpg" alt="Vocal Student">
+        <img src="assets/images/p.JPG" alt="Vocal Student">
+        <img src="assets/images/x.JPG" alt="Vocal Student">
+        <img src="assets/images/h.jpg" alt="Vocal Student">
+        <img src="assets/images/j.jpg" alt="Vocal Student">
+        <img src="assets/images/l.jpg" alt="Vocal Student">
+        <img src="assets/images/f.jpg" alt="Vocal Student">
+        <img src="assets/images/t.JPG" alt="Vocal Student">
+        <img src="assets/images/w.JPG" alt="Vocal Student">
+        <img src="assets/images/u.JPG" alt="Vocal Student">
+        <!-- Duplicate Set for Seamless Loop -->
+        <img src="assets/images/e.jpg" alt="Vocal Student">
+        <img src="assets/images/f.jpg" alt="Vocal Student">
+        <img src="assets/images/k.jpg" alt="Vocal Student">
+        <img src="assets/images/p.JPG" alt="Vocal Student">
+        <img src="assets/images/x.JPG" alt="Vocal Student">
+        <img src="assets/images/h.jpg" alt="Vocal Student">
+        <img src="assets/images/j.jpg" alt="Vocal Student">
+        <img src="assets/images/l.jpg" alt="Vocal Student">
+        <img src="assets/images/f.jpg" alt="Vocal Student">
+        <img src="assets/images/t.JPG" alt="Vocal Student">
+        <img src="assets/images/w.JPG" alt="Vocal Student">
+        <img src="assets/images/u.JPG" alt="Vocal Student">
       </div>
     </div>
   </section>
