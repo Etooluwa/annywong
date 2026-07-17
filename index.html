@@ -896,6 +896,13 @@
       margin: 16px auto 0;
     }
 
+    .socials .collab-note {
+      display: block;
+      margin-top: 18px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
     .socials-grid {
       display: flex;
       justify-content: center;
@@ -932,64 +939,12 @@
       flex-shrink: 0;
     }
 
-    /* ── CONTACT ── */
-    .contact-section {
-      background: var(--bg);
-      text-align: center;
-    }
-
-    .contact-section .section-title {
-      margin: 0 auto;
-    }
-
-    .contact-section .section-desc {
-      margin: 16px auto 0;
-    }
-
-    .contact-email {
-      display: inline-block;
-      margin-top: 40px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 3vw, 2.2rem);
-      font-weight: 400;
-      color: var(--text);
-      text-decoration: none;
-      padding-bottom: 4px;
-      border-bottom: 1px solid rgba(44, 44, 44, 0.2);
-      transition: border-color 0.3s;
-    }
-
-    .contact-email:hover {
-      border-color: var(--text);
-    }
-
     /* ── FOOTER ── */
     footer {
       background: var(--dark);
       color: var(--text);
       padding: 80px 80px 40px;
       text-align: center;
-    }
-
-    .footer-socials {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 50px;
-    }
-
-    .footer-socials a {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(60, 48, 33, 0.5);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer-socials a:hover {
-      color: var(--text);
     }
 
     .footer-logo {
@@ -1333,13 +1288,6 @@
         height: 180px;
       }
 
-      /* Footer socials */
-      .footer-socials {
-        flex-wrap: wrap;
-        gap: 16px;
-        justify-content: center;
-      }
-
       .footer-logo {
         font-size: 1.8rem;
       }
@@ -1364,7 +1312,6 @@
       <a href="#" class="nav-logo">ANNY WANG VOCALS</a>
       <ul class="nav-links" id="navLinks2">
         <li><a href="#socials"><span class="dot"></span>Socials</a></li>
-        <li><a href="#contact"><span class="dot"></span>Contact</a></li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -1456,7 +1403,7 @@
         <div class="service-number">02</div>
         <h3>Monthly Technique Coaching</h3>
         <p>Train monthly with a designated technique coach certified by Anny Wang to support your vocal progress.</p>
-        <a href="https://stan.store/annywangmusic/p/chest-voice-transformation" class="service-price"
+        <a href="https://stan.store/annywangmusic/p/the-vocal-communitys-membership" class="service-price"
           style="text-decoration: none; display: block;">Book Now →</a>
       </div>
       <div class="service-card fade-up">
@@ -1464,7 +1411,7 @@
         <h3>4-Month Premium Program</h3>
         <p>A 4-month premium program designed for focused vocal transformation — includes full course access, monthly
           coaching with a designated technique coach and 1:1 sessions with Anny Wang.</p>
-        <a href="https://stan.store/annywangmusic/p/master-your-voice-with-anny-copy" class="service-price"
+        <a href="https://stan.store/annywangmusic/p/chest-voice-transformation" class="service-price"
           style="text-decoration: none; display: block;">Apply Now →</a>
       </div>
     </div>
@@ -1527,10 +1474,10 @@
 
   <!-- SOCIALS -->
   <section class="socials" id="socials">
-    <p class="section-tag fade-up">Follow Along</p>
+    <p class="section-tag fade-up">Start Your Vocal Journey</p>
     <h2 class="section-title fade-up"><em>Stay</em> Connected</h2>
-    <p class="section-desc fade-up">Join the community and follow Anny's latest vocal tips, performances, and
-      behind-the-scenes moments.</p>
+    <p class="section-desc fade-up">Join a global community of singers and create your dream voice with Anny's weekly
+      coaching. <span class="collab-note">For collaborations, contact hello@annywongvocals.com.</span></p>
     <div class="socials-grid fade-up">
       <a href="https://www.instagram.com/annywangvocals/" class="social-link" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24">
@@ -1556,14 +1503,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <p class="section-tag fade-up">Get in Touch</p>
-    <h2 class="section-title fade-up"><em>Let's</em> Connect</h2>
-    <p class="section-desc fade-up">For bookings, inquiries, or collaborations — reach out directly.</p>
-    <a href="mailto:hello@annywang.com" class="contact-email fade-up">hello@annywang.com</a>
-  </section>
-
   <!-- MARQUEE 2 -->
   <div class="marquee">
     <div class="marquee-track">
@@ -1578,20 +1517,14 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-socials">
-      <a href="https://www.instagram.com/annywangvocals/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.youtube.com/@annywangvocals" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.tiktok.com/@annywangvocals" target="_blank" rel="noopener">TikTok</a>
-    </div>
     <div class="footer-logo">ANNY WANG</div>
     <ul class="footer-nav">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Vocal Training</a></li>
       <li><a href="#socials">Socials</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="footer-line"></div>
-    <p class="footer-copy">© 2026 Anny Wang Vocal Training. All rights reserved.</p>
+    <p class="footer-copy">© 2026 Vocal Transformation Studios. All rights reserved.</p>
   </footer>
 
   <script>
