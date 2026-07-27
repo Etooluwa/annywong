@@ -84,6 +84,15 @@
       display: flex;
       gap: 32px;
       list-style: none;
+      flex: 1;
+    }
+
+    #navLinks {
+      justify-content: flex-end;
+    }
+
+    #navLinks2 {
+      justify-content: flex-start;
     }
 
     .nav-links .mobile-only {
@@ -1186,6 +1195,7 @@
         align-items: center;
         gap: 30px;
         z-index: 999;
+        flex: none;
       }
 
       .nav-links.open a {
@@ -1357,6 +1367,7 @@
       </ul>
       <a href="#" class="nav-logo">ANNY WANG VOCALS</a>
       <ul class="nav-links" id="navLinks2">
+        <li><a href="#students"><span class="dot"></span>Our Students</a></li>
         <li><a href="#socials"><span class="dot"></span>Socials</a></li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
@@ -1463,7 +1474,7 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials">
+  <section class="testimonials" id="students">
     <p class="section-tag fade-up">Testimonials</p>
     <h2 class="section-title fade-up"><em>Our</em> Students</h2>
 
@@ -1589,6 +1600,7 @@
     <ul class="footer-nav">
       <li><a href="#services">Vocal Training</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#students">Our Students</a></li>
       <li><a href="#socials">Socials</a></li>
     </ul>
     <div class="footer-line"></div>
