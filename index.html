@@ -810,16 +810,57 @@
     }
 
     .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
       gap: 30px;
       margin-top: 60px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .testimonial-grid::-webkit-scrollbar {
+      display: none;
     }
 
     .testimonial {
+      flex: 0 0 calc((100% - 30px) / 2);
       padding: 44px;
       background: var(--white);
       border: 1px solid rgba(0, 0, 0, 0.04);
+      scroll-snap-align: start;
+    }
+
+    .testimonial-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .testimonial-arrow {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(60, 48, 33, 0.18);
+      background: var(--white);
+      color: var(--text);
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-arrow:hover:not(:disabled) {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .testimonial-arrow:disabled {
+      cursor: not-allowed;
+      opacity: 0.35;
     }
 
     .testimonial .quote {
@@ -1093,8 +1134,8 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .testimonial-grid {
-        grid-template-columns: 1fr;
+      .testimonial {
+        flex-basis: min(620px, 72vw);
       }
     }
 
@@ -1263,7 +1304,12 @@
 
       /* Testimonials */
       .testimonial {
+        flex-basis: calc(100vw - 48px);
         padding: 28px 24px;
+      }
+
+      .testimonial-controls {
+        justify-content: center;
       }
 
       /* Team grid - single column on small phones */
@@ -1423,20 +1469,43 @@
 
     <div class="testimonial-grid">
       <div class="testimonial fade-up">
-        <p class="quote">"Anny completely transformed my understanding of my own voice. The Anny Wang Method gave me
-          confidence I never knew I had."</p>
-        <p class="author">Sarah M., Worship Leader</p>
+        <p class="quote">"Working with Anny has been an incredible part of Karmah's journey in The Voice Kids. She has
+          been proactive, deeply supportive, technically exceptional, and genuinely invested in every detail of Karmah's
+          growth and readiness for the show! But above everything else, the one thing that truly stands out about Anny is
+          how deeply she cares about her students. She became far more than a coach to Karmah - she became a real source
+          of confidence, motivation, and inspiration for all of us."</p>
+        <p class="author">Parents of Karmah Gerges, The Voice Kids contestant</p>
       </div>
       <div class="testimonial fade-up">
-        <p class="quote">"After the 8-week course, I booked my first studio session. Anny's coaching is unlike anything
-          else: deeply technical but always encouraging."</p>
-        <p class="author">Marcus T., R&amp;B Artist</p>
+        <p class="quote">"As someone who's naturally shy, I never imagined I'd feel so comfortable singing in front of
+          others. The supportive community made every class feel welcoming, but what stood out most were the one-on-one
+          sessions with Anny. Her constructive feedback helped me recognize my mistakes, refine my technique, and build
+          confidence. I've especially improved my breathing and chest voice projection, and I'm grateful I took that first
+          step. I hope others can experience the same growth and enjoyment that I did."</p>
+        <p class="author">Isaac</p>
       </div>
       <div class="testimonial fade-up">
-        <p class="quote">"The corporate workshop transformed how our leadership team communicates. Anny made every
-          session engaging and immediately impactful."</p>
-        <p class="author">Jennifer K., VP of Operations</p>
+        <p class="quote">"I used to dislike my voice, but everything changed after working with Anny and becoming part
+          of the Vocal Transformation community. In just two months, I began hearing my voice differently and genuinely
+          enjoying the way I sing. I discovered a natural, healthy, and unique sound while finding more joy in singing
+          than ever before. If you're looking to transform your voice and your confidence, I highly recommend giving it a
+          try."</p>
+        <p class="author">Christina</p>
       </div>
+      <div class="testimonial fade-up">
+        <p class="quote">"The program is thoughtfully designed, combining vocal theory with practical application to help
+          singers develop strong technique. Anny offers both group and private lessons, creating opportunities to learn
+          in performance settings as well as through focused individual coaching. She celebrates every bit of progress,
+          encourages growth without pressure, and provides clear guidance toward mastering chest voice and belt
+          technique. I would recommend this program to anyone who wants to build a solid vocal foundation and sing with
+          greater confidence."</p>
+        <p class="author">Nora</p>
+      </div>
+    </div>
+
+    <div class="testimonial-controls fade-up" aria-label="Student testimonial navigation">
+      <button class="testimonial-arrow" type="button" id="testimonialPrev" aria-label="Previous testimonial">‹</button>
+      <button class="testimonial-arrow" type="button" id="testimonialNext" aria-label="Next testimonial">›</button>
     </div>
 
     <div class="image-carousel fade-up">
@@ -1625,7 +1694,38 @@
         }
       });
 
-      // 4. Scroll Fade Animations
+      // 4. Testimonial Carousel
+      const testimonialGrid = document.querySelector('.testimonial-grid');
+      const testimonialPrev = document.getElementById('testimonialPrev');
+      const testimonialNext = document.getElementById('testimonialNext');
+
+      if (testimonialGrid && testimonialPrev && testimonialNext) {
+        const getTestimonialStep = () => {
+          const firstCard = testimonialGrid.querySelector('.testimonial');
+          const gap = parseFloat(window.getComputedStyle(testimonialGrid).columnGap) || 0;
+          return firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
+        };
+
+        const updateTestimonialControls = () => {
+          const maxScroll = testimonialGrid.scrollWidth - testimonialGrid.clientWidth;
+          testimonialPrev.disabled = testimonialGrid.scrollLeft <= 2;
+          testimonialNext.disabled = testimonialGrid.scrollLeft >= maxScroll - 2;
+        };
+
+        testimonialPrev.addEventListener('click', () => {
+          testimonialGrid.scrollBy({ left: -getTestimonialStep(), behavior: 'smooth' });
+        });
+
+        testimonialNext.addEventListener('click', () => {
+          testimonialGrid.scrollBy({ left: getTestimonialStep(), behavior: 'smooth' });
+        });
+
+        testimonialGrid.addEventListener('scroll', updateTestimonialControls);
+        window.addEventListener('resize', updateTestimonialControls);
+        updateTestimonialControls();
+      }
+
+      // 5. Scroll Fade Animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
