@@ -1173,6 +1173,24 @@
         font-size: 1rem;
       }
 
+      .nav-links.open::after {
+        content: "Start your vocal journey";
+        position: absolute;
+        left: 50%;
+        bottom: max(42px, calc(env(safe-area-inset-bottom) + 28px));
+        transform: translateX(-50%);
+        width: min(280px, calc(100% - 48px));
+        padding-top: 24px;
+        border-top: 1px solid rgba(60, 48, 33, 0.16);
+        color: rgba(60, 48, 33, 0.58);
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
       .mobile-toggle.active span:nth-child(1) {
         background: var(--dark);
         transform: rotate(45deg) translate(5px, 5px);
